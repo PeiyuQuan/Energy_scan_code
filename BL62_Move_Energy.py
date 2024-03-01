@@ -8,7 +8,7 @@ def energy(mono):
 	hc = 12398.4244
 	dspacing = 3.1356
 	fmono = float(mono)
-	crystal_1 = epics.PV("BL62:iXI4:m1.VAL")
+	crystal_1 = epics.PV("BL62:DMC02:m1.VAL")
 	if fmono >= 3000.0 and fmono <= 13000.0:
 		m1 = 2*dspacing*fmono
 		crystal = math.asin(hc/m1)
