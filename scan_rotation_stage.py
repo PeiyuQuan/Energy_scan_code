@@ -35,9 +35,9 @@ def scan_rotation_stage(start, step, points, mono, file_name):
         time.sleep(0.5)
 """ save value to .txt file """
     f = open(file_name, "a")
-    f.write("\timage_name\timage_number\tenergy\tintensity\texposure_time\rangle\n")
+    f.write("\timage_name\timage_number\trotation_angle\tintensity\texposure_time\renergy\n")
     for m in range(0,len(a)):
-        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], f[m]))
+        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], a[m], f[m], b[m], c[m], f[m]))
     fina_image_number= epics.PV("SSRL:Camera27S5M:HDF1:FileNumber_RBV").get(as_numpy=True)-1
     time.sleep(1)
 """ plot data &x axis is energy points and y axis is intensity at ROI """ 
