@@ -14,7 +14,7 @@ def scan_energy_1_range(start, step, points, file_name):
     c=[]
     d=[]
     e=[]
-    f=[]
+    h=[]
     n=[]
     epics.PV("SSRL:Camera27S5M:cam1:ImageMode").put('Single',wait=True)
     epics.PV("SSRL:Camera27S5M:cam1:TriggerMode").put('Off',wait=True)
@@ -35,11 +35,11 @@ def scan_energy_1_range(start, step, points, file_name):
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True))
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     f = open(file_name, "a")
     f.write("#\timage_name\timage_num\tenergy\tintensity\texposure_time\tangle\n")
     for m in range(0,len(a)):
-        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], f[m]))
+        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("SSRL:Camera27S5M:HDF1:FileNumber_RBV").get(as_numpy=True)-1
     time.sleep(1)
     x=a
@@ -59,7 +59,7 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, file_name)
     c=[]
     d=[]
     e=[]
-    f=[]
+    h=[]
     n=[]
     epics.PV("SSRL:Camera27S5M:cam1:ImageMode").put('Single',wait=True)
     epics.PV("SSRL:Camera27S5M:cam1:TriggerMode").put('Off',wait=True)
@@ -80,7 +80,7 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, file_name)
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True)) 
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     for i in range(0, points1):
         mono = start1 + step1*i
         a.append(mono)
@@ -95,11 +95,11 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, file_name)
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True)) 
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     f = open(file_name, "a")
     f.write("#\timage_name\timage_num\tenergy\tintensity\texposure_time\tangle\n")
     for m in range(0,len(a)):
-        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], f[m]))
+        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("SSRL:Camera27S5M:HDF1:FileNumber_RBV").get(as_numpy=True)-1
     time.sleep(1)
     x=a
@@ -119,7 +119,7 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
     c=[]
     d=[]
     e=[]
-    f=[]
+    h=[]
     n=[]
     epics.PV("SSRL:Camera27S5M:cam1:ImageMode").put('Single',wait=True)
     epics.PV("SSRL:Camera27S5M:cam1:TriggerMode").put('Off',wait=True)
@@ -140,7 +140,7 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True))
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     for i in range(0, points1):
         mono = start1 + step1*i
         a.append(mono)
@@ -156,7 +156,7 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True))
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     for i in range(0, points2):
         mono = start2 + step2*i
         a.append(mono)
@@ -171,11 +171,11 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True))
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     f = open(file_name, "a")
     f.write("#\timage_name\timage_num\tenergy\tintensity\texposure_time\tangle\n")
     for m in range(0,len(a)):
-        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], f[m]))
+        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("SSRL:Camera27S5M:HDF1:FileNumber_RBV").get(as_numpy=True)-1
     time.sleep(1)
     x=a
@@ -195,7 +195,7 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
     c=[]
     d=[]
     e=[]
-    f=[]
+    h=[]
     n=[]
     epics.PV("SSRL:Camera27S5M:cam1:ImageMode").put('Single',wait=True)
     epics.PV("SSRL:Camera27S5M:cam1:TriggerMode").put('Off',wait=True)
@@ -216,7 +216,7 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True))
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     for i in range(0, points1):
         mono = start1 + step1*i
         a.append(mono)
@@ -231,7 +231,7 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True))
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     for i in range(0, points2):
         mono = start2 + step2*i
         a.append(mono)
@@ -246,7 +246,7 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True))
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     for i in range(0, points3):
         mono = start3 + step3*i
         a.append(mono)
@@ -261,11 +261,11 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
         epics.PV("SSRL:Camera27S5M:cam1:Acquire").put('Acquire')
         time.sleep(0.5)
         b.append(epics.PV("SSRL:Camera27S5M:ROIStat1:1:Total_RBV").get(as_numpy=True))
-        f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
+        h.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
     f = open(file_name, "a")
     f.write("#\timage_name\timage_num\tenergy\tintensity\texposure_time\tangle\n")
     for m in range(0,len(a)):
-        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], f[m]))
+        f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], h[m]))
     fina_image_number= epics.PV("SSRL:Camera27S5M:HDF1:FileNumber_RBV").get(as_numpy=True)-1
     x=a
     y=b
