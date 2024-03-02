@@ -38,7 +38,7 @@ def scan_energy_1_range(start, step, points, file_name):
         f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
         time.sleep(0.5)
     f = open(file_name, "a")
-    f.write("\timage_name\timage_number\tenergy\tintensity\texposure_time\rangle\n")
+    f.write("#\timage_name\timage_num\tenergy\tintensity\texposure_time\tangle\n")
     for m in range(0,len(a)):
         f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], f[m]))
     fina_image_number= epics.PV("SSRL:Camera27S5M:HDF1:FileNumber_RBV").get(as_numpy=True)-1
@@ -101,7 +101,7 @@ def scan_energy_2_ranges(start, step, points, start1, step1, points1, file_name)
         f.append(epics.PV("BL62:DMC01:m4.RBV").get(as_numpy=True))
         time.sleep(0.5)
     f = open(file_name, "a")
-    f.write("\timage_name\timage_number\tenergy\tintensity\texposure_time\rangle\n")
+    f.write("#\timage_name\timage_num\tenergy\tintensity\texposure_time\tangle\n")
     for m in range(0,len(a)):
         f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], f[m]))
     fina_image_number= epics.PV("SSRL:Camera27S5M:HDF1:FileNumber_RBV").get(as_numpy=True)-1
@@ -183,7 +183,7 @@ def scan_energy_3_ranges(start, step, points, start1 , step1, points1, start2, s
         time.sleep(0.5)
 
     f = open(file_name, "a")
-    f.write("\timage_name\timage_number\tenergy\tintensity\texposure_time\rangle\n")
+    f.write("#\timage_name\timage_num\tenergy\tintensity\texposure_time\tangle\n")
     for m in range(0,len(a)):
         f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], f[m]))
     fina_image_number= epics.PV("SSRL:Camera27S5M:HDF1:FileNumber_RBV").get(as_numpy=True)-1
@@ -282,7 +282,7 @@ def scan_energy_4_ranges(start, step, points, start1 , step1, points1, start2, s
         time.sleep(0.5)
 
     f = open(file_name, "a")
-    f.write("\timage_name\timage_number\tenergy\tintensity\texposure_time\rangle\n")
+    f.write("#\timage_name\timage_num\tenergy\tintensity\texposure_time\tangle\n")
     for m in range(0,len(a)):
         f.write("{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(n[m], d[m], e[m], a[m], b[m], c[m], f[m]))
     fina_image_number= epics.PV("SSRL:Camera27S5M:HDF1:FileNumber_RBV").get(as_numpy=True)-1
